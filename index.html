@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loung pp sml, Muoyheang</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #87CEFA;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            position: relative;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Corner Images */
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 120px;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 120px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .yes {
+            background-color: #228B22;
+            color: white;
+        }
+
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top Left Image -->
+    <img class="top-left" src="sad-emoji.png" alt="Sad emoji">
+
+    <h1>Chub khg b ban ot pp sml🥺?</h1>
+
+    <div class="buttons">
+        <button id="yesBtn" class="yes">Chub kor ban😒</button>
+        <button id="noBtn" class="no">Ot</button>
+    </div>
+
+    <!-- Bottom Right Image -->
+    <img class="bottom-right" src="sad-emoji-2.png" alt="Sad emoji 2">
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const question = document.querySelector('h1');
+    const images = document.querySelectorAll('img');
+
+    let yesSize = 16;
+    let noSize = 16;
+
+    // YES button opens the link reliably
+    yesBtn.addEventListener('click', () => {
+        window.location.href = 'https://www.desmos.com/calculator/0toowaxpl4';
+    });
+
+    // NO button behavior
+    noBtn.addEventListener('click', () => {
+
+        // YES grows
+        yesSize += 4;
+        yesBtn.style.fontSize = yesSize + 'px';
+        yesBtn.style.padding = (12 + yesSize/5) + 'px ' + (24 + yesSize/5) + 'px';
+
+        // Question grows
+        question.style.fontSize = (24 + yesSize/4) + 'px';
+
+        // Images grow
+        images.forEach(img => {
+            img.style.width = (120 + yesSize/3) + 'px';
+        });
+
+        // NO shrinks
+        noSize -= 2;
+
+        if (noSize > 6) {
+            noBtn.style.fontSize = noSize + 'px';
+            noBtn.style.padding = (12 + noSize/5) + 'px ' + (24 + noSize/5) + 'px';
+        } else {
+            noBtn.style.display = 'none';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
